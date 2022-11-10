@@ -49,3 +49,6 @@ class UserLogin(Resource):
             token_acesso = create_access_token(identity=user.user_id)
             return {'access_token': token_acesso}, 200
         return {'message': 'User or password is not correct.'}
+
+
+"felipe"
