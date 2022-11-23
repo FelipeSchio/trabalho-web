@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api
 from resources.movies import Movies, Movie
 from resources.users import User, UserLogin
@@ -23,11 +23,42 @@ app.config['JWT_SECRET_KEY'] = 'Senai2022'
 def create_database():
     database.create_all()
 
-api.add_resource(Movies, '/movies')
-api.add_resource(Movie, '/movies/<int:id>')
-api.add_resource(User, '/users/<int:user_id>')
-api.add_resource(UserLogin, '/login')
+# Telas
+@app.route("/")
+def login():
+    return "Login"
 
+@app.route("/menu")
+def menu():
+    return "Menu"
+
+@app.route("/tabela")
+def tabela():
+    return "Tabela"
+
+@app.route("/caixa")
+def caixa():
+    return "caixa"
+
+@app.route("/produto")
+def produto():
+    return "Produto"
+
+@app.route("/fornecedor")
+def fornecedor():
+    return "Fornecedor"
+
+@app.route("/funcionario")
+def funcionario():
+    return "Funcionario"
+
+@app.route("/faq")
+def faq():
+    return "FAQ"
+
+@app.route("/relatorio")
+def relatorio():
+    return "Relatorio"
 
 if __name__ == '__main__':
     from sql_alchemy import database
