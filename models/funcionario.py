@@ -4,7 +4,7 @@ class FunciModel (database.Model):
 
     __tablename__ = 'funcionario'
     id = database.Column(database.Integer, primary_key = True)
-    name = database.Column(database.String(25))
+    nome = database.Column(database.String(25))
     email = database.Column(database.String(25))
     telefone = database.Column(database.String(25))
     senha = database.Column(database.String(25))
@@ -13,9 +13,9 @@ class FunciModel (database.Model):
     data_atualizacao = database.Column(database.date)
 
 
-def __int__ (self, id, name, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
+def __int__ (self, id, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
         self.id = id
-        self.name = name
+        self.nome = nome
         self.email = email
         self.telefone = telefone
         self.senha = senha
@@ -26,7 +26,7 @@ def __int__ (self, id, name, email, telefone, senha, tipo, data_cadastro, data_a
     def json (self):
         return {
         'id': self.id,
-        'name': self.name,
+        'nome': self.nome,
         'email': self.email,
         'telefone': self.telefone,
         'senha': self.senha,
@@ -46,8 +46,8 @@ def __int__ (self, id, name, email, telefone, senha, tipo, data_cadastro, data_a
         database.session.add(self)
         database.session.commit()
 
-    def update_funci(self, name, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
-        self.name = name
+    def update_funci(self, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
+        self.nome = nome
         self.email = email
         self.telefone = telefone
         self.senha = senha

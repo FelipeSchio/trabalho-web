@@ -3,23 +3,15 @@ from models.funcionario import FunciModel
 
 funcionarios = [
     {'id': 1,
-     'name': 'Homem-Aranha 3', 'rating': '4.5',
+     'nome': 'Homem-Aranha 3', 'rating': '4.5',
      'duration': '120', 'creat_at': '2020', 'age_group': '13',
      'link_trailer': '#'},
-    {'id': 2,
-     'name': 'Dois filhos', 'rating': '2.5',
-     'duration': '111', 'creat_at': '2013', 'age_group': '13',
-     'link_trailer': '#'},
-    {'id': 3,
-     'name': 'Top gun', 'rating': '3.9',
-     'duration': '160', 'creat_at': '1995', 'age_group': '18',
-     'link_trailer': '#'}
 ]
 
 class FunciModel():
-    def __int__(self, id, name, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
+    def __int__(self, id, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
         self.id = id
-        self.name = name
+        self.nome = nome
         self.email = email
         self.telefone = telefone
         self.senha = senha
@@ -30,7 +22,7 @@ class FunciModel():
         def json(self):
             return {
                 'id': self.id,
-                'name': self.name,
+                'nome': self.nome,
                 'email': self.email,
                 'telefone': self.telefone,
                 'senha': self.senha,
@@ -45,7 +37,7 @@ class Funcionarios(Resource):
 
 class Funcionario(Resource):
     minha_requisicao = reqparse.RequestParser()
-    minha_requisicao.add_argument('name')
+    minha_requisicao.add_argument('nome')
     minha_requisicao.add_argument('email')
     minha_requisicao.add_argument('telefone')
     minha_requisicao.add_argument('senha')
