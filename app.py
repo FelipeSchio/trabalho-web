@@ -53,7 +53,11 @@ def faq():
 
 @app.route("/relatorio")
 def relatorio():
-    return "Relatorio"
+    return render_template("relatorio.html")
+
+@app.route("/<string:nome>")
+def error(nome):
+    return f'Página {nome} não existe'
 
 if __name__ == '__main__':
     # from sql_alchemy import database
