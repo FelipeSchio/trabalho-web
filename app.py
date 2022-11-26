@@ -1,22 +1,20 @@
 from flask import Flask, render_template
 from flask_restful import Api
-from resources.users import User, UserLogin
 from flask_jwt_extended import JWTManager
+from sql_alchemy import database
 
 app = Flask(__name__)
 api = Api(app)
 jwt = JWTManager(app)
 
 # conexão com mysql
-# DATABASE_URI = 'mysql+pymysql://root@localhost/felipe?charset=utf8mb4'
-# app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+DATABASE_URI = 'mysql+pymysql://root:1234@localhost/mercadinho?charset=utf8mb4'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# app.config['JWT_SECRET_KEY'] = 'Senai2022'
-
-# @app.before_first_request
-# def create_database():
-    # database.create_all()
+@app.before_first_request
+def create_database():
+    database.create_all()
 
 # Telas
 @app.route("/")
@@ -60,6 +58,5 @@ def error(nome):
     return f'Página {nome} não existe'
 
 if __name__ == '__main__':
-    # from sql_alchemy import database
-    # database.init_app(app)
+    database.init_app(app)
     app.run(debug=True)

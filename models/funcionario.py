@@ -3,7 +3,7 @@ from sql_alchemy import database
 class FunciModel (database.Model):
 
     __tablename__ = 'funcionario'
-    id = database.Column(database.Integer, primary_key = True)
+    id = database.Column(database.Integer, primary_key = True, autoincrement=True)
     nome = database.Column(database.String(25))
     email = database.Column(database.String(25))
     telefone = database.Column(database.String(25))
@@ -13,8 +13,7 @@ class FunciModel (database.Model):
     data_atualizacao = database.Column(database.date)
 
 
-def __int__ (self, id, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
-        self.id = id
+def __int__ (self, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
         self.nome = nome
         self.email = email
         self.telefone = telefone
@@ -36,7 +35,7 @@ def __int__ (self, id, nome, email, telefone, senha, tipo, data_cadastro, data_a
         }
 
     @classmethod
-    def find_funci_by_id(cls, id):  # metodo de classe, mesmo que chamar Movie.query
+    def find_funci_by_id(cls, id):
         movie = cls.query.filter_by(id=id).first()  # select * from funcionario where id = 1
         if movie:
             return movie
