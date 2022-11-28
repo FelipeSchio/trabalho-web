@@ -21,7 +21,7 @@ def create_database():
 def login():
     return render_template("login.html")
 
-@app.route("/menu")
+@app.route("/menu", methods=["POST"])
 def menu():
     return render_template("menu.html")
 
