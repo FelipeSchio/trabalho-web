@@ -13,7 +13,7 @@ class FunciModel (database.Model):
     data_atualizacao = database.Column(database.date)
 
 
-def __int__ (self, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
+    def __int__ (self, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
         self.nome = nome
         self.email = email
         self.telefone = telefone
