@@ -36,9 +36,16 @@ class FunciModel (database.Model):
 
     @classmethod
     def find_funci_by_id(cls, id):
-        movie = cls.query.filter_by(id=id).first()  # select * from funcionario where id = 1
-        if movie:
-            return movie
+        funci = cls.query.filter_by(id=id).first()
+        if funci:
+            return funci
+        return None
+
+    @classmethod
+    def find_funci_by_login(cls, email):
+        user = cls.query.filter_by(email = email).first()
+        if user:
+            return user
         return None
 
     def save_funci(self):

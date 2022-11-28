@@ -9,15 +9,15 @@ minha_requisicao.add_argument('senha', type=str, required=True, help="senha é n
 class Funci(Resource):
 
     def get(self, id):
-        funci = FunciModel.find_user_by_id(id)
+        funci = FunciModel.find_funci_by_id(id)
         if funci:
             return funci.json()
         return {'message': 'funcionário não encontrado'}, 200
 
     def delete(self, id):
-        funci = FunciModel.find_user_by_id(id)
+        funci = FunciModel.find_funci_by_id(id)
         if funci:
-            funci.delete_user()
+            funci.delete_funci()
             return {'message': 'funcionário deletado.'}
         return {'message': 'funcionário não encontrado'}, 200
 
@@ -32,19 +32,19 @@ class Funci(Resource):
 
         try:
             print(novo_funci.json())
-            novo_funci.save_user()
+            novo_funci.save_funci()
         except:
             return {'message': 'An internal error ocurred.'}, 500
 
         return novo_funci.json(), 201
 
 
-class UserLogin(Resource):
+class FunciLogin(Resource):
 
     @classmethod
     def post(cls):
         dados = minha_requisicao.parse_args()
-        funci = FunciModel.find_user_by_login(dados['email'])
+        funci = FunciModel.find_funci_by_login(dados['email'])
 
         if funci and funci.senha == dados['senha']:
             token_acesso = create_access_token(identity=funci.id)
