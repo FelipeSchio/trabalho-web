@@ -8,7 +8,7 @@ api = Api(app)
 jwt = JWTManager(app)
 
 # conexão com mysql
-DATABASE_URI = 'mysql+pymysql://root:@localhost/mercadinho?charset=utf8mb4'
+DATABASE_URI = 'mysql+pymysql://root:1234@localhost/mercadinho?charset=utf8mb4'
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -21,7 +21,7 @@ def create_database():
 def login():
     return render_template("login.html")
 
-@app.route("/menu", methods=["POST"])
+@app.route("/menu", methods=["GET", "POST"])
 def menu():
     return render_template("menu.html")
 

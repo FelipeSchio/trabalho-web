@@ -11,21 +11,21 @@
         <div class="col"></div>
         <div class="col" id="conteiner">
             <div style="text-align: center;">
-            <h1>Login</h1>
+                <h1>Login</h1>
             </div>
+            <form action="/menu" method="POST">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Email</span>
-                    <input type="text" class="form-control" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="email" name="email" class="form-control" placeholder="Insira um email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Senha</span>
-                    <input type="text" class="form-control" id="senha" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="password" name="password" class="form-control" placeholder="*********" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div style="text-align: center;">
-                    <form action="/menu" method="POST">
-                        <button class="btn btn-warning">Entrar</button>
-                    </form>
+                    <input type="submit" value="Logar" class="btn btn-warning">
                 </div>
+            </form>
         </div>
         <div class="col"></div>
     </div>
