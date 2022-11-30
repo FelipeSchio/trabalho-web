@@ -73,6 +73,10 @@ def faq():
 def relatorio():
     return render_template("relatorio.html")
 
+@app.route("/rodape")
+def rodape():
+    return render_template("rodape.html")
+
 @app.route("/<string:nome>")
 def error(nome):
     return f'Página {nome} não existe'
