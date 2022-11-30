@@ -1,7 +1,10 @@
-from flask import Flask, render_template
+import datetime
+
+from flask import Flask, render_template, request, redirect, url_for
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from sql_alchemy import database
+from models.funcionario import FunciModel
 
 app = Flask(__name__)
 api = Api(app)
@@ -41,8 +44,25 @@ def produto():
 def fornecedor():
     return render_template("fornecedor.html")
 
-@app.route("/funcionario")
+@app.route("/funcionario", methods=["GET", "POST"])
 def funcionario():
+
+    if request.method == 'POST':
+
+        nome = request.form['nome']
+        email = request.form['email']
+        telefone = request.form['telefone']
+        senha = request.form['senha']
+        tipo = request.form['tipo']
+        data_cadastro = datetime.date.today()
+        data_atualizacao = datetime.date.today()
+
+        novo_funcionario = FunciModel(nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao)
+        database.session.add(novo_funcionario)
+        database.session.commit()
+
+        return redirect(url_for('menu'))
+
     return render_template("funcionario.html")
 
 @app.route("/faq")
