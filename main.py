@@ -2,6 +2,7 @@ import datetime
 
 from app import app, database
 from flask import render_template, request, redirect, url_for
+from flask_login import login_user, logout_user
 from models.funcionario import FunciModel
 
 @app.before_first_request
@@ -11,7 +12,25 @@ def create_database():
 # Telas
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+
+        email = request.form['email']
+        senha = request.form['senha']
+
+        funci = FunciModel.query.filter_by(email=email).first()
+
+        if not funci or not FunciModel.verificar_senha(senha):
+            return redirect(url_for('login'))
+
+        login_user(funci)
+        return redirect(url_for('menu'))
+
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 @app.route('/menu', methods=['GET', 'POST'])
 def menu():

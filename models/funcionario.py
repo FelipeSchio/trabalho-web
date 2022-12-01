@@ -1,7 +1,11 @@
-from app import database
+from app import database, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-class FunciModel (database.Model):
+@login_manager.user_loader
+def get_user(id):
+    return FunciModel.query.filter_by(id=id).first()
+class FunciModel (database.Model, UserMixin):
 
     __tablename__ = 'funcionario'
     id = database.Column(database.Integer, primary_key = True, autoincrement=True)
@@ -41,5 +45,5 @@ class FunciModel (database.Model):
         database.session.add(self)
         database.session.commit()
 
-    def verify_password(self, senha):
+    def verificar_senha(self, senha):
         return check_password_hash(self.senha, senha)
