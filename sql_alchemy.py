@@ -1,3 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 
-database = SQLAlchemy()
+from app import app
+
+database = SQLAlchemy(app)
+
+"Deletar esse arquivo"

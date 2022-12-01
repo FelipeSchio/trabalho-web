@@ -1,4 +1,4 @@
-from sql_alchemy import database
+from app import database
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class FunciModel (database.Model):

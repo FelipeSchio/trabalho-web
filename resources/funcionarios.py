@@ -2,10 +2,11 @@ from flask_restful import Resource, reqparse
 from models.funcionario import FunciModel
 from flask_jwt_extended import create_access_token
 
+"""
 minha_requisicao = reqparse.RequestParser()
 minha_requisicao.add_argument('email', type=str, required=True, help="email é necessário")
 minha_requisicao.add_argument('senha', type=str, required=True, help="senha é necessária")
-
+"""
 class Funci(Resource):
 
     def get(self, id):
