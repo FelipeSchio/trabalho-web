@@ -46,11 +46,11 @@ def funcionario():
         data_cadastro = datetime.date.today()
         data_atualizacao = datetime.date.today()
 
-        novo_funcionario = FunciModel(nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao)
+        novo_funcionario = FunciModel(nome=nome, email=email, telefone=telefone, senha=senha, tipo=tipo, data_cadastro=data_cadastro, data_atualizacao=data_atualizacao)
         database.session.add(novo_funcionario)
         database.session.commit()
 
-        return redirect(url_for('menu'))
+        return redirect(url_for('funcionario'))
 
     return render_template('funcionario.html')
 
