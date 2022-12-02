@@ -5,7 +5,7 @@ from flask_login import UserMixin
 @login_manager.user_loader
 def get_user(id):
     return FunciModel.query.filter_by(id=id).first()
-class FunciModel (database.Model, UserMixin):
+class FunciModel(database.Model, UserMixin):
 
     __tablename__ = 'funcionario'
     id = database.Column(database.Integer, primary_key = True, autoincrement=True)
@@ -36,9 +36,9 @@ class FunciModel (database.Model, UserMixin):
 
     @classmethod
     def find_funci_by_login(cls, email):
-        user = cls.query.filter_by(email = email).first()
-        if user:
-            return user
+        funci = cls.query.filter_by(email=email).first()
+        if funci:
+            return funci
         return None
 
     def save_funci(self):

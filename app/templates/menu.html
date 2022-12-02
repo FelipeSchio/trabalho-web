@@ -12,9 +12,11 @@
         <div class="col" id="conteiner">
             <div style="text-align: center; margin-bottom: 15px;">
                 {% if current_user.is_authenticated %}
-                    <h1>ta logado</h1>
+                    <h1>Usuário: {{ current_user.nome }}</h1>
+                    <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Sair</button></a>
                 {% else %}
-                    <h1>não ta logado</h1>
+                    <h1>Sem usuário logado</h1>
+                    <a href="{{ url_for('login') }}"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Logar</button></a>
                 {% endif %}
             </div>
               <div class="d-flex flex-column mb-3" style="text-align: center;">
