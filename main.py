@@ -4,6 +4,7 @@ from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 from models.funcionario import FunciModel
 from models.fornecedor import ForneModel
+from models.produto import ProdModel
 
 @app.before_first_request
 def create_database():
@@ -56,8 +57,21 @@ def caixa():
 
 @app.route('/produto', methods=['GET', 'POST'])
 def produto():
-    return render_template('produto.html')
+    if request.method == 'POST':
+        nome = request.form['nome']
+        preco_unitario = request.form['preco_unitario']
+        quantidade = request.form['quantidade']
+        unidade = request.form['unidade']
+        fornecedor = request.form['fornecedor']
 
+        novo_produto = ProdModel(nome=nome, preco_unitario=preco_unitario, quantidade=quantidade,
+                                     unidade=unidade, fornecedor=fornecedor)
+        database.session.add(novo_produto)
+        database.session.commit()
+
+        return redirect(url_for('produto'))
+
+    return render_template('produto.html')
 
 @app.route('/fornecedor', methods=['GET', 'POST'])
 def fornecedor():
