@@ -3,7 +3,7 @@ from app import app, database
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 from models.funcionario import FunciModel
-
+from models.fornecedor import ForneModel
 
 @app.before_first_request
 def create_database():
@@ -61,8 +61,18 @@ def produto():
 
 @app.route('/fornecedor', methods=['GET', 'POST'])
 def fornecedor():
-    return render_template('fornecedor.html')
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        telefone = request.form['telefone']
 
+        novo_fornecedor = ForneModel(nome=nome, email=email, telefone=telefone)
+        database.session.add(novo_fornecedor)
+        database.session.commit()
+
+        return redirect(url_for('fornecedor'))
+
+    return render_template('fornecedor.html')
 
 @app.route('/funcionario', methods=['GET', 'POST'])
 def funcionario():

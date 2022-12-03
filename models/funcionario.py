@@ -1,5 +1,5 @@
 from app import database, login_manager
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from flask_login import UserMixin
 
 
@@ -28,23 +28,6 @@ class FunciModel(database.Model, UserMixin):
         self.data_cadastro = data_cadastro
         self.data_atualizacao = data_atualizacao
 
-    @classmethod
-    def find_funci_by_id(cls, id):
-        funci = cls.query.filter_by(id=id).first()
-        if funci:
-            return funci
-        return None
-
-    @classmethod
-    def find_funci_by_login(cls, email):
-        funci = cls.query.filter_by(email=email).first()
-        if funci:
-            return funci
-        return None
-
-    def save_funci(self):
-        database.session.add(self)
-        database.session.commit()
 
     def verificar_senha(self, senha):
 
