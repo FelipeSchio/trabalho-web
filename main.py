@@ -1,5 +1,4 @@
 import datetime
-
 from app import app, database
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
@@ -19,10 +18,13 @@ def login():
         email = request.form['email']
         senha = request.form['senha']
 
+
         # Verifica email e senha
         funci = FunciModel.query.filter_by(email=email).first()
+        if funci is not None:
+            senha = funci.verificar_senha(senha=senha)
 
-        if not funci:
+        if not email or not senha:
             return redirect(url_for('login'))
 
         login_user(funci)

@@ -19,11 +19,15 @@
                     <a href="{{ url_for('login') }}"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Logar</button></a>
                 {% endif %}
             </div>
+                {% if current_user.tipo == 'Administrador' %}
               <div class="d-flex flex-column mb-3" style="text-align: center;">
                 <a href="tabela"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Tabelas</button></a>
                 <a href="produto"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Produtos</button></a>
                 <a href="fornecedor"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Fornecedores</button></a>
                 <a href="funcionario"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Funcionários</button></a>
+              </div>
+                {% endif %}
+              <div class="d-flex flex-column mb-3" style="text-align: center;">
                 <a href="caixa"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Caixa</button></a>
                 <a href="relatorio"><button type="button" class="btn btn-warning mt-2 w-50 p-2">Relatórios</button></a>
                 <a href="faq"><button type="button" class="btn btn-warning mt-2 w-50 p-2">FAQ</button></a>

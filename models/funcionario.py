@@ -2,13 +2,15 @@ from app import database, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+
 @login_manager.user_loader
 def get_user(id):
     return FunciModel.query.filter_by(id=id).first()
-class FunciModel(database.Model, UserMixin):
 
+
+class FunciModel(database.Model, UserMixin):
     __tablename__ = 'funcionario'
-    id = database.Column(database.Integer, primary_key = True, autoincrement=True)
+    id = database.Column(database.Integer, primary_key=True, autoincrement=True)
     nome = database.Column(database.String(25), nullable=False)
     email = database.Column(database.String(25), nullable=False)
     telefone = database.Column(database.String(25), nullable=False)
@@ -17,8 +19,7 @@ class FunciModel(database.Model, UserMixin):
     data_cadastro = database.Column(database.Date, nullable=False)
     data_atualizacao = database.Column(database.Date, nullable=False)
 
-
-    def __int__ (self, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
+    def __int__(self, nome, email, telefone, senha, tipo, data_cadastro, data_atualizacao):
         self.nome = nome
         self.email = email
         self.telefone = telefone
@@ -46,4 +47,11 @@ class FunciModel(database.Model, UserMixin):
         database.session.commit()
 
     def verificar_senha(self, senha):
-        return check_password_hash(self.senha, senha)
+
+        if self.senha == senha:
+            return True
+        else:
+            return False
+
+        # Não está funcionando
+        """return check_password_hash(self.senha, senha)"""
