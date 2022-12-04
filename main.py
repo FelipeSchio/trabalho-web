@@ -1,11 +1,12 @@
 import datetime
 from app import app, database
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from models.funcionario import FunciModel
 from models.fornecedor import ForneModel
 from models.produto import ProdModel
 from models.caixa import VendaModel
+
 
 @app.before_first_request
 def create_database():
@@ -19,7 +20,6 @@ def login():
 
         email = request.form['email']
         senha = request.form['senha']
-
 
         # Verifica email e senha
         funci = FunciModel.query.filter_by(email=email).first()
@@ -60,7 +60,7 @@ def caixa():
         valor_total = request.form['valor_total']
 
         nova_venda = VendaModel(funcionario=funcionario, produto=produto, quantidade=quantidade,
-                                     valor_total=valor_total)
+                                valor_total=valor_total)
         database.session.add(nova_venda)
         database.session.commit()
 
@@ -79,13 +79,14 @@ def produto():
         fornecedor = request.form['fornecedor']
 
         novo_produto = ProdModel(nome=nome, preco_unitario=preco_unitario, quantidade=quantidade,
-                                     unidade=unidade, fornecedor=fornecedor)
+                                 unidade=unidade, fornecedor=fornecedor)
         database.session.add(novo_produto)
         database.session.commit()
 
         return redirect(url_for('produto'))
 
     return render_template('produto.html')
+
 
 @app.route('/fornecedor', methods=['GET', 'POST'])
 def fornecedor():
@@ -101,6 +102,7 @@ def fornecedor():
         return redirect(url_for('fornecedor'))
 
     return render_template('fornecedor.html')
+
 
 @app.route('/funcionario', methods=['GET', 'POST'])
 def funcionario():

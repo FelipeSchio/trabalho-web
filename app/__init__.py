@@ -5,7 +5,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 api = Api(app)
-"jwt = JWTManager(app)"
 
 # conexão com mysql
 DATABASE_URI = 'mysql+pymysql://root:1234@localhost/mercadinho?charset=utf8mb4'
