@@ -5,6 +5,7 @@ from flask_login import login_user, logout_user
 from models.funcionario import FunciModel
 from models.fornecedor import ForneModel
 from models.produto import ProdModel
+from models.caixa import VendaModel
 
 @app.before_first_request
 def create_database():
@@ -52,6 +53,19 @@ def tabela():
 
 @app.route('/caixa', methods=['GET', 'POST'])
 def caixa():
+    if request.method == 'POST':
+        funcionario = request.form['funcionario']
+        produto = request.form['produto']
+        quantidade = request.form['quantidade']
+        valor_total = request.form['valor_total']
+
+        nova_venda = VendaModel(funcionario=funcionario, produto=produto, quantidade=quantidade,
+                                     valor_total=valor_total)
+        database.session.add(nova_venda)
+        database.session.commit()
+
+        return redirect(url_for('caixa'))
+
     return render_template('caixa.html')
 
 
