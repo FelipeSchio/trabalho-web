@@ -38,3 +38,4 @@ class FunciModel(database.Model, UserMixin):
 
         # Não está funcionando
         """return check_password_hash(self.senha, senha)"""
+

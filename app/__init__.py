@@ -14,3 +14,4 @@ app.config['SECRET_KEY'] = 'secreta'
 
 login_manager = LoginManager(app)
 database = SQLAlchemy(app)
+

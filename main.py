@@ -1,7 +1,7 @@
 import datetime
 from app import app, database
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user
 from models.funcionario import FunciModel
 from models.fornecedor import ForneModel
 from models.produto import ProdModel
@@ -48,7 +48,9 @@ def menu():
 
 @app.route('/tabela', methods=['GET', 'POST'])
 def tabela():
-    return render_template('tabela.html')
+    dados = {"nome": "Felipe", "email": "felipe@gmail.com", "tipo": "Operacional"}
+
+    return render_template('tabela.html', dados=dados)
 
 
 @app.route('/caixa', methods=['GET', 'POST'])
@@ -129,7 +131,7 @@ def funcionario():
 def faq():
     return render_template('faq.html')
 
-
+# deixa pra fazer por ultimo
 @app.route('/relatorio', methods=['GET', 'POST'])
 def relatorio():
     return render_template('relatorio.html')

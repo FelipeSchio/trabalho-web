@@ -16,28 +16,27 @@
             <form action="" method="POST">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Nome</span>
-                    <input type="text" name="nome" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="text" name="nome" placeholder="Ex: João Silva" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">E-mail</span>
-                    <input type="text" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="email" name="email" placeholder="Ex: joao@gamli.com" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Telefone</span>
-                    <input type="text" name="telefone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="text" name="telefone" placeholder="Ex: (47) 94561-5461" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
                     <select class="form-select" name="tipo" id="inputGroupSelect01">
-                      <option selected></option>
-                      <option value="Administrador">Administrador</option>
-                      <option value="Gerente">Gerente</option>
-                      <option value="Operacional">Operacional</option>
+                        <option value="Operacional" selected>Operacional</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Gerente">Gerente</option>
                     </select>
                 </div>  
                 <div class="input-group mb-3">
                 <span class="input-group-text">Senha</span>
-                <input type="password" name="senha" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="password" name="senha" placeholder="*************" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div style="text-align: center;">
                 <input type="submit" value="Cadastrar" class="btn btn-warning">
