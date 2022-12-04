@@ -12,8 +12,21 @@
         <div class="col" id="conteiner">
             <div style="text-align: center; margin-bottom: 15px;">
               <h1>Relatórios</h1>
-              <a href="menu"><button type="button" class="btn btn-warning">Voltar</button></a>
+                <a href="menu"><button type="button" class="btn btn-warning">Voltar</button></a>
             </div>
+            <form action="" method="POST">
+            <div class="d-flex flex-column mb-3" style="text-align: center;">
+                <span class="input-group-text">Data inicial</span>
+                <input type="date" name="data_inicial" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <br>
+                <span class="input-group-text">Data final</span>
+                <input type="date" name="data_final" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <br>
+                <div style="text-align: center;">
+                    <input type="submit" class="btn btn-warning" value="Visualizar">
+                </div>
+            </div>
+            </form>
         </div>
         <div class="col"></div>
     </div>

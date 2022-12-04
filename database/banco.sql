@@ -38,6 +38,7 @@ create table if not exists Venda (
     funcionario integer not null,
     quantidade integer not null,
     valor_total double not null,
+	data_venda date not null,
     primary key (id),
     foreign key (produto) references produto (id),
     foreign key (funcionario) references funcionario (id)

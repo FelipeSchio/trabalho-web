@@ -60,9 +60,10 @@ def caixa():
         produto = request.form['produto']
         quantidade = request.form['quantidade']
         valor_total = request.form['valor_total']
+        data_venda = datetime.date.today()
 
         nova_venda = VendaModel(funcionario=funcionario, produto=produto, quantidade=quantidade,
-                                valor_total=valor_total)
+                                valor_total=valor_total, data_venda=data_venda)
         database.session.add(nova_venda)
         database.session.commit()
 

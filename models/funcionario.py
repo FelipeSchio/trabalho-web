@@ -1,5 +1,5 @@
 from app import database, login_manager
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
@@ -23,7 +23,7 @@ class FunciModel(database.Model, UserMixin):
         self.nome = nome
         self.email = email
         self.telefone = telefone
-        self.senha = generate_password_hash(senha)
+        self.senha = generate_password_hash(senha) # <- não ta funcionando
         self.tipo = tipo
         self.data_cadastro = data_cadastro
         self.data_atualizacao = data_atualizacao
